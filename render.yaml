@@ -5,6 +5,7 @@ services:
     plan: free
     name: kifi-telegram-middleware
     runtime: docker
+    repo: https://github.com/ssmy-tech/kifi-telegram-middleware
     image:
       url: https://hub.docker.com/r/tradekifi/telegram-middleware
     envVars:
