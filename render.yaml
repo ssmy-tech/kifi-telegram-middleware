@@ -10,8 +10,6 @@ services:
     image:
       url: docker.io/tradekifi/telegram-middleware:latest
     envVars:
-      - key: NODE_ENV
-        value: production
       - key: PORT
         value: 3000
       - key: TELEGRAM_API_ID
