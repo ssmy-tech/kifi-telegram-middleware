@@ -1,29 +1,19 @@
+# This is a basic example Blueprint for a Django web service and
+# the Render Postgres database it connects to.
 services:
-  - type: web
-    name: telegram-middleware
-    runtime: docker
-    image:
-      url: https://hub.docker.com/r/tradekifi/telegram-middleware
-    region: virginia
-    plan: starter
-    healthCheckPath: /api/health
+  - type: web # A Python web service named django-app running on a free instance
+    plan: free
+    name: django-app
+    runtime: python
+    repo: https://github.com/render-examples/django.git
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        value: 3000
-      - key: TELEGRAM_API_ID
-        sync: false
-      - key: TELEGRAM_API_HASH
-        sync: false
-      - key: TELEGRAM_PHONE
-        sync: false
-      - key: JWT_SECRET
-        generateValue: true
-      - key: ALLOWED_ORIGINS
-        sync: false
-    disk:
-      name: telegram-sessions
-      mountPath: /app/sessions
-      sizeGB: 1
-    autoDeploy: true 
+      - key: DATABASE_URL # Sets DATABASE_URL to the connection string of the django-app-db database
+        fromDatabase:
+          name: django-app-db
+          property: connectionString
+
+databases:
+  - name: django-app-db # A Render Postgres database named django-app-db running on a free instance
+    plan: free
