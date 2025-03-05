@@ -6,6 +6,7 @@ services:
     name: kifi-telegram-middleware
     runtime: image
     region: virginia
+    healthCheckPath: /api/health
     image:
       url: docker.io/tradekifi/telegram-middleware:latest
     envVars:
@@ -23,3 +24,7 @@ services:
         generateValue: true
       - key: ALLOWED_ORIGINS
         sync: false
+    disk:
+      name: telegram-sessions
+      mountPath: /app/sessions
+      sizeGB: 1
