@@ -6,7 +6,6 @@ services:
     name: kifi-telegram-middleware
     runtime: image
     region: virginia
-    healthCheckPath: /api/health
     image:
       url: docker.io/tradekifi/telegram-middleware:latest
     envVars:
