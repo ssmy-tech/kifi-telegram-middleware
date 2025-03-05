@@ -7,7 +7,7 @@ services:
     runtime: image
     region: virginia
     image:
-      url: https://hub.docker.com/r/tradekifi/telegram-middleware
+      url: docker.io/tradekifi/telegram-middleware:latest
     envVars:
       - key: NODE_ENV
         value: production
