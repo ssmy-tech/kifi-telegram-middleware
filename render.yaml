@@ -9,7 +9,6 @@ services:
     image:
       url: https://hub.docker.com/r/tradekifi/telegram-middleware
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: NODE_ENV
         value: production
