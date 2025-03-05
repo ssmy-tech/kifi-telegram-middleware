@@ -4,11 +4,10 @@ services:
   - type: web # A Python web service named django-app running on a free instance
     plan: free
     name: kifi-telegram-middleware
-    runtime: docker
+    runtime: image
     repo: https://github.com/ssmy-tech/kifi-telegram-middleware
     image:
       url: https://hub.docker.com/r/tradekifi/telegram-middleware
-    buildCommand: "./build.sh"
     envVars:
       - key: NODE_ENV
         value: production
