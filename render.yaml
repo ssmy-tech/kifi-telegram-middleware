@@ -3,11 +3,10 @@
 services:
   - type: web # A Python web service named django-app running on a free instance
     plan: free
-    name: django-app
-    runtime: python
-    repo: https://github.com/render-examples/django.git
-    buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
+    name: kifi-telegram-middleware
+    runtime: docker
+    image:
+      url: https://hub.docker.com/r/tradekifi/telegram-middleware
     envVars:
       - key: NODE_ENV
         value: production
